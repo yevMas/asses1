@@ -9,18 +9,23 @@
  *
  *****************************************************************************/
 /**
- * @file <Add File Name> 
- * @brief <Add Brief Description Here >
+ * File name: stats.c 
+ * 	This file includes the function implementations of every defined 
+ * 	function in the .h file.
  *
- * <Add Extended Description Here>
+ * 	It incorporates the functional code of each printing, sorting and 
+ * 	finder function of the project. 
  *
- * @author <Add FirsName LastName>
- * @date <Add date >
+ * 	This project works with an array of data finding the median, maximum, 
+ * 	minimum, and mean values of that data array. 
  *
+ * 	This project is for learning and practicing purposes.
+ * *
+ * Author: Yevyeni Mascareñas
+ * Date: 12/27/2022
  */
 
-
-
+#include <string.h>
 #include <stdio.h>
 #include "stats.h"
 
@@ -36,8 +41,81 @@ void main() {
                                 7,  87, 250, 230,  99,   3, 100,  90};
 
   /* Other Variable Declarations Go Here */
+  unsigned char* ptr = test;
   /* Statistics and Printing Functions Go Here */
+  print_array(ptr);
+  print_statistics(ptr);
 
 }
 
-/* Add other Implementation File Code Here */
+
+/*-------------Function Implementations----------*/ 
+/* Statistics printer function */
+void print_statistics(unsigned char* array){
+	printf("\nStatistics:\n");
+	printf("Maximum: %i \n", find_maximum(array, sizeof(array)));
+	printf("Minimum: %i \n", find_minimum(array, sizeof(array)));
+	printf("Median: %i \n", find_median(array, sizeof(array)));
+	printf("Mean: %i \n", find_mean(array, sizeof(array)));
+	printf("\n");
+}
+
+/*This function prints the value of a data array*/
+void print_array(unsigned char* array){
+	printf("Array values: \n");
+	for(int i=0; i<SIZE ; i++){
+		printf(" %i, ", array[i]); 
+	}
+
+}
+
+/*This function finds the median of the data array */ 
+int find_median(unsigned char* array, int length){
+	int median;
+	median = array[length/2];
+
+	return(median);
+}
+
+/*This function finds the maximum value of the data array */
+int find_maximum(unsigned char* array, int length){
+	sort_array(array, length);
+	
+	return(array[0]);
+}
+/*this function finds the mean value of the data array*/
+int find_mean(unsigned char* array, int length){
+	int sum = 0;
+	for(int i=0; i<length ; i++){
+		sum += array[i];
+	}
+//	sum = sum/SIZE;
+
+	return (sum/length);
+}
+
+/*this function finds the minimum value of the data array */ 
+int find_minimum(unsigned char* array, int length){
+	sort_array(array, length);
+
+	return(array[SIZE-1]);
+}
+
+/*Bubble sort*/
+void sort_array(unsigned char* array, int length){
+	unsigned char aux;
+
+	for(int i=0; i<SIZE ;i++){
+		for(int j=0; j<SIZE ;j++){
+			if(array[i] > array[j]){
+				aux = array[i];
+				array[i] = array[j];
+				array[j] = aux;
+			}
+		}
+	}
+}
+
+
+
+
