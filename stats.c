@@ -41,10 +41,10 @@ void main() {
                                 7,  87, 250, 230,  99,   3, 100,  90};
 
   /* Other Variable Declarations Go Here */
-  unsigned char* ptr = test;
+//  unsigned char* ptr = test;
   /* Statistics and Printing Functions Go Here */
-  print_array(ptr);
-  print_statistics(ptr);
+  print_array(test);
+  print_statistics(test);
 
 }
 
@@ -53,10 +53,11 @@ void main() {
 /* Statistics printer function */
 void print_statistics(unsigned char* array){
 	printf("\nStatistics:\n");
-	printf("Maximum: %i \n", find_maximum(array, sizeof(array)));
-	printf("Minimum: %i \n", find_minimum(array, sizeof(array)));
-	printf("Median: %i \n", find_median(array, sizeof(array)));
-	printf("Mean: %i \n", find_mean(array, sizeof(array)));
+	printf("Maximum: %i \n", find_maximum(array, SIZE));
+	printf("Minimum: %i \n", find_minimum(array, SIZE));
+	printf("Median: %i \n", find_median(array, SIZE));
+	printf("Mean: %i \n", find_mean(array, SIZE));
+	printf("%li", sizeof(array));
 	printf("\n");
 }
 
@@ -72,7 +73,7 @@ void print_array(unsigned char* array){
 /*This function finds the median of the data array */ 
 int find_median(unsigned char* array, int length){
 	int median;
-	median = array[length/2];
+	median = array[19];
 
 	return(median);
 }
